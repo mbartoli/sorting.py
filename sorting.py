@@ -63,6 +63,9 @@ def merge_sort(unsorted):
 	   (a list of 1 element is considered sorted).
    	2) Repeatedly merge sublists to produce new sorted sublists until there
 	   is only 1 sublist remaining. This will be the sorted list.
+	   
+	Other things to know:
+	- Achieves O(n) when the input is already sorted
 	"""	
 	if len(unsorted) == 1:
 		return unsorted
