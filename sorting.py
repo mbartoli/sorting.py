@@ -12,7 +12,7 @@ Sorting algorithms currently included:
 
 def insertation_sort(unsorted):
 	""" 
-	Insertation sort -- O(n^2) 
+	Insertation sort -- Worst: O(n^2), Best: O(n), Average: O(n^2)
 
 	Insertion sort iterates, consuming one input element each repetition,
 	and growing a sorted output list. Each iteration, insertion sort
@@ -28,6 +28,20 @@ def insertation_sort(unsorted):
 	the correct position within the sorted list, shifts all the larger
 	values up to make a space, and inserts into that correct position.
 
+	Other things to know: 
+	- Efficient for (quite) small data sets
+	- More efficient in practice than most other simple quadratic. 
+	  (i.e., O(n2)) algorithms such as selection sort or bubble sort and 
+	  usually faster in practice than asymptotically faster algorithms for
+	  small data sets.
+	- Adaptive, i.e., efficient for data sets that are already 
+	  substantially sorted: the time complexity is O(nk) when each element 
+	  in the input is no more than k places away from its sorted position.
+	- Stable; i.e., does not change the relative order of elements with 
+	  equal keys.
+	- In-place; i.e., only requires a constant amount O(1) of additional
+	  memory space.
+	- Online; i.e., can sort a list as it receives it.
 	"""
 	for j in range(1,len(unsorted)-1):
 		key = unsorted[j]
