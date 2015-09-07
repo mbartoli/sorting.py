@@ -6,9 +6,9 @@ Sorting.py -- a compilation of various sorting algorithms
 Sorting algorithms currently included: 
 - Insertation Sort
 - Merge Sort
+- Selection Sort
 
 """
-
 
 
 def insertation_sort(unsorted):
@@ -94,12 +94,41 @@ def merge(left,right):
 	return result 
 
 
+def selection_sort(unsorted):
+	"""
+	Selection sort -- Worst: O(n^2), Best: O(n^2), Average: O(n^2)
+
+	The algorithm divides the input list into two parts: the sublist of 
+	items already sorted, which is built up from left to right at the 
+	front (left) of the list, and the sublist of items remaining to be 
+	sorted that occupy the rest of the list. Initially, the sorted sublist 
+	is empty and the unsorted sublist is the entire input list. The 
+	algorithm proceeds by finding the smallest (or largest, depending on
+	sorting order) element in the unsorted sublist, exchanging (swapping) 
+	it with the leftmost unsorted element (putting it in sorted order), and
+	moving the sublist boundaries one element to the right.
+
+	Other things to know:
+	- Worst case space complexity: O(n) total.
+	- In-place sorting algorithm.
+	"""
+	for n in range(1,len(unsorted)):
+		min = n
+		for m in range(n+1,len(unsorted)):
+			if unsorted[m] < unsorted[min]:
+				min = m
+		if min != n:
+			temp = unsorted[n]
+			unsorted[n] = unsorted[min]
+			unsorted[min] = temp 
+	return unsorted
 
 def main():
 	unsorted = [24,4,5,29,29,39,17,10,11,20,32]
 	sorted = [4,5,10,11,17,20,24,29,29,32,39]
 	assert insertation_sort(unsorted) == sorted
 	assert merge_sort(unsorted) == sorted
+	assert selection_sort(unsorted) == sorted
 
 
 if __name__ == '__main__':
