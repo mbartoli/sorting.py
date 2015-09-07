@@ -5,6 +5,7 @@ Sorting.py -- a compilation of various sorting algorithms
 
 Sorting algorithms currently included: 
 - Insertation Sort
+- Merge Sort
 
 """
 
@@ -43,7 +44,7 @@ def insertation_sort(unsorted):
 	  memory space.
 	- Online; i.e., can sort a list as it receives it.
 	"""
-	for j in range(1,len(unsorted)-1):
+	for j in range(1,len(unsorted)):
 		key = unsorted[j]
 		i = j
 		while i > 0 and unsorted[i-1] > key:
@@ -53,10 +54,49 @@ def insertation_sort(unsorted):
 	return unsorted
 
 
+def merge_sort(unsorted):
+	"""
+	Merge sort -- Worst: O(n log n), Best: O(n log n), Average: O(n log n)
+
+	Conceptually, a merge sort works as follows:
+    	1) Divide the unsorted list into n sublists, each containing 1 element 
+	   (a list of 1 element is considered sorted).
+   	2) Repeatedly merge sublists to produce new sorted sublists until there
+	   is only 1 sublist remaining. This will be the sorted list.
+	"""	
+	if len(unsorted) == 1:
+		return unsorted
+	middle = len(unsorted)/2
+	left, right = unsorted[:middle], unsorted[middle:]
+	left, right = merge_sort(left), merge_sort(right)
+	return merge(left,right)
+
+def merge(left,right):
+	""" 
+	Auxillary function for merge sort 
+	"""
+	result = [] 
+	l_idx, r_idx = 0, 0
+	while l_idx < len(left) and r_idx < len(right):
+		if left[l_idx] <= right[r_idx]:
+			result.append(left[l_idx])
+			l_idx += 1
+		else:
+			result.append(right[r_idx])
+			r_idx += 1
+	if left:
+		result.extend(left[l_idx:])
+	if right:
+		result.extend(right[r_idx:])
+	return result 
+
+
+
 def main():
 	unsorted = [24,4,5,29,29,39,17,10,11,20,32]
-	sorted = [4,5,10,11,17,20,24,29,29,39,32]
+	sorted = [4,5,10,11,17,20,24,29,29,32,39]
 	assert insertation_sort(unsorted) == sorted
+	assert merge_sort(unsorted) == sorted
 
 
 if __name__ == '__main__':
