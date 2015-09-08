@@ -4,16 +4,16 @@
 Sorting.py -- a compilation of various sorting algorithms 
 
 Sorting algorithms currently included: 
-- Insertation Sort
+- Insertion Sort
 - Merge Sort
 - Selection Sort
 
 """
 
 
-def insertation_sort(unsorted):
+def insertion_sort(unsorted):
 	""" 
-	Insertation sort -- Worst: O(n^2), Best: O(n), Average: O(n^2)
+	Insertion sort -- Worst: O(n^2), Best: O(n), Average: O(n^2)
 
 	Insertion sort iterates, consuming one input element each repetition,
 	and growing a sorted output list. Each iteration, insertion sort
@@ -126,7 +126,7 @@ def selection_sort(unsorted):
 def main():
 	unsorted = [24,4,5,29,29,39,17,10,11,20,32]
 	sorted = [4,5,10,11,17,20,24,29,29,32,39]
-	assert insertation_sort(unsorted) == sorted
+	assert insertion_sort(unsorted) == sorted
 	assert merge_sort(unsorted) == sorted
 	assert selection_sort(unsorted) == sorted
 
