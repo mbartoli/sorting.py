@@ -7,6 +7,7 @@ Sorting algorithms currently included:
 - Insertion Sort
 - Merge Sort
 - Selection Sort
+- Quicksort
 
 """
 
